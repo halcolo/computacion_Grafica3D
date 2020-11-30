@@ -82,11 +82,15 @@ public class Escene extends Application {
                            Double scale,
                            Integer option) throws IOException {
 
+        // Llamar al objeto 3D
+
         AmbientLight light1 = new AmbientLight();
         Node model = Importer3D.load(getClass().getResource(url).toExternalForm());
         model.setScaleX(scale);
         model.setScaleY(scale);
         model.setScaleZ(scale);
+
+        // Crear la escena y asignarle un background.
 
         ImageView imageView = new ImageView();
         Image bgimage=new Image(bg);
@@ -97,6 +101,8 @@ public class Escene extends Application {
         imageView.setFitWidth(1280);
         imageView.setScaleZ(-500.0);
         Group root = new Group(imageView, model, light1);
+
+        // Indicar la posición de la camara
 
         Scene scene1 = new Scene(root, 1280, 720, true, SceneAntialiasing.BALANCED);
         PerspectiveCamera camera = new PerspectiveCamera();
@@ -144,6 +150,7 @@ public class Escene extends Application {
             fadeTransition.setToValue(0.3f);
             fadeTransition.setCycleCount(2);
             fadeTransition.setAutoReverse(true);
+
         } else if (option == 4) {
             // Giro en diagonal derecho
             RotateTransition rt = new RotateTransition(Duration.seconds(10), model);
