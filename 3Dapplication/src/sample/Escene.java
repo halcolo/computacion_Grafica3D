@@ -104,15 +104,16 @@ public class Escene extends Application {
         camera.setTranslateY(scene1.getHeight()/-2);
 
         if (option == 1) {
+            // Giro a en su propio eje a la derecha
             RotateTransition rt = new RotateTransition(Duration.seconds(10), model);
             rt.setCycleCount(Animation.INDEFINITE);
-            rt.setFromAngle(0);
-            rt.setToAngle(360);
+            rt.setFromAngle(360);
+            rt.setToAngle(0);
             rt.setAxis(new Point3D(0, 1, 0));
             rt.play();
 
         } else if (option == 2) {
-
+            // Giro en su propio eje izquierda
             RotateTransition rt = new RotateTransition(Duration.seconds(10), model);
             rt.setCycleCount(Animation.INDEFINITE);
             rt.setFromAngle(0);
@@ -129,7 +130,7 @@ public class Escene extends Application {
             st.setToZ(300);
 
         } else if (option == 3) {
-
+            // Giro en diagonal izquierdo
             RotateTransition rt = new RotateTransition(Duration.seconds(10), model);
             rt.setCycleCount(Animation.INDEFINITE);
             rt.setFromAngle(0);
@@ -144,6 +145,7 @@ public class Escene extends Application {
             fadeTransition.setCycleCount(2);
             fadeTransition.setAutoReverse(true);
         } else if (option == 4) {
+            // Giro en diagonal derecho
             RotateTransition rt = new RotateTransition(Duration.seconds(10), model);
             rt.setCycleCount(Animation.INDEFINITE);
             rt.setFromAngle(360);
@@ -151,12 +153,25 @@ public class Escene extends Application {
             rt.setAxis(new Point3D(0, 1, 1));
             rt.play();
         } else {
+
+            // Giro en diagonal derecho
             RotateTransition rt = new RotateTransition(Duration.seconds(10), model);
             rt.setCycleCount(Animation.INDEFINITE);
-            rt.setFromAngle(360);
-            rt.setToAngle(180);
-            rt.setAxis(new Point3D(1, 1, 0));
+            rt.setFromAngle(90);
+            rt.setToAngle(0);
+            rt.setAxis(new Point3D(0, 1, 1));
             rt.play();
+
+            // Cambio de escala de 3 a 12 en 10 segundos
+            ScaleTransition st = new ScaleTransition(Duration.seconds(10), model);
+            st.setCycleCount(Animation.INDEFINITE);
+            st.setFromX(3);
+            st.setToX(scale);
+            st.setFromY(3);
+            st.setToY(scale);
+            st.setFromZ(3);
+            st.setToX(scale);
+            st.play();
 
         }
         ScaleTransition st = new ScaleTransition(Duration.seconds(10));
